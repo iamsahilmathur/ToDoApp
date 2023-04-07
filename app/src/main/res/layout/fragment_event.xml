@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.event_management.EventFragment">
+
+    <data>
+        <variable
+            name="eventVM"
+            type="com.example.todo.presentation.event_management.EventViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pCL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/g1"
+            app:layout_constraintGuide_percent=".2"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/g2"
+            app:layout_constraintGuide_percent=".1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/g3"
+            app:layout_constraintGuide_percent=".9"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <EditText
+            android:id="@+id/eventET"
+            android:text="@={eventVM.EName}"
+            android:paddingHorizontal="@dimen/_10dp"
+            android:paddingVertical="@dimen/_14dp"
+            app:layout_constraintTop_toBottomOf="@id/g1"
+            app:layout_constraintStart_toStartOf="@id/g2"
+            app:layout_constraintEnd_toStartOf="@id/g3"
+            android:hint="@string/event_name"
+            android:textSize="@dimen/_14sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/eventDscET"
+            android:text="@={eventVM.EDesc}"
+            android:layout_marginTop="@dimen/_10dp"
+            android:paddingHorizontal="@dimen/_10dp"
+            android:paddingVertical="@dimen/_14dp"
+            app:layout_constraintTop_toBottomOf="@id/eventET"
+            app:layout_constraintStart_toStartOf="@id/g2"
+            app:layout_constraintEnd_toStartOf="@id/g3"
+            android:hint="@string/event_desc"
+            android:textSize="@dimen/_14sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/addEventBtn"
+            android:layout_marginTop="@dimen/_14dp"
+            app:layout_constraintStart_toStartOf="@id/g2"
+            app:layout_constraintEnd_toStartOf="@id/g3"
+            app:layout_constraintTop_toBottomOf="@id/eventDscET"
+            android:text="@string/add_event"
+            android:onClick="@{() -> eventVM.addEvent()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
